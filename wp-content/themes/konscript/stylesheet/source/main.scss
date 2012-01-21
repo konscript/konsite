@@ -6,6 +6,11 @@
 @import "_wordpress";
 @import "_base";
 
+// Handy variables
+
+$color_alt-primary: #000;
+$color_primary: #fff;
+
 // Default blueprint setup on the body
 body.bp {
   @include blueprint-typography(true);
@@ -26,7 +31,6 @@ form.bp {
 // Contains everything
 body {}
 	#body-wrapper {
-		@include container;
 	}
 
 /**
@@ -34,17 +38,33 @@ body {}
  ************************************************/
 
 // Contains entire header
-#header-container {}
-	#header {}
+#header-container {
+	width: 100%;
+	height: 6em;
+	background-color: $color_alt-primary;
+}
+	#header {
+		@include container;
+	}
 
 		// Site title
 		#site-title {
-			a {}
+			@include column(6);
+			margin-top: 0.5em;
+			a {
+				color: $color_primary;
+				font-weight: normal;
+				text-transform: uppercase;
+				text-decoration: none;
+				font-size: 0.9em;
+			}
 				a span {}
 		}
 
 		// Site description/tagline
-		#site-description {}
+		#site-description {
+			display: none;
+		}
 
 	/**
 	 * 2.1 Primary Menu
@@ -52,14 +72,33 @@ body {}
 
 	// Wrapper for entire menu area
 	#primary-menu {
-
+		@include column(18, true);
+		margin: 0;
+		height: 6em;
+		
 		// Wrapper for unordered list of menu items
-		div.menu {}
+		div.menu {
+			margin: 0;
+		}
 
 			// Menu list.
-			ul {}
-				li {}
-					li a {}
+			ul {
+				margin: 0;
+				float: right;
+			}
+				li {
+					@include column(3);
+					height: 6em;
+					text-align: center;
+				}
+					li a {
+						display: block;
+						padding: 2em 0;
+						padding-left: $blueprint-grid-margin / 2;
+						color: $color_primary;
+						border-left: 1px solid $color_primary;						
+						text-decoration: none;
+					}
 				li.current-menu-item {}
 		}
 		
@@ -69,7 +108,9 @@ body {}
 
 // Contains site's main content
 #content-container {}
-	#content {}
+	#content {
+		@include container;
+	}
 
 		// Breadcrumb trail
 		.breadcrumb {}
@@ -221,6 +262,7 @@ body {}
 
 	// Primary widget section
 	#sidebar-primary {
+		@include container;
 		.widget {}
 			.widget-inside {}
 				.widget-title {}
@@ -235,6 +277,7 @@ body {}
 // Wrapper for the entire footer
 #footer-container {}
 	#footer {
+		@include container;
 
 		// Footer extra
 		.copyright {}
