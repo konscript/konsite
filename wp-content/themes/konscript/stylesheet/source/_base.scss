@@ -19,7 +19,7 @@ $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $b
 $color_primary: #fff;
 $color_secondary: #eee;
 $color_alt-primary: #000;
-$color_alt-secondary: #666;
+$color_alt-secondary: #444;
 $color_con-primary: #00ff7e;
 $color_con-darker: #00753a;
 
@@ -41,3 +41,4 @@ $link-hover-color: $color_alt-secondary;
 @import "compass/typography/text/replacement";
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
+@import "compass/css3/text-shadow"

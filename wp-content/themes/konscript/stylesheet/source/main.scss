@@ -25,7 +25,7 @@ form.bp {
 
 // Contains everything
 body {
-	background-color: $color_primary;
+	background-color: $color_secondary;
 }
 	#body-wrapper {
 		background-color: $color_primary; // Old browsers
@@ -43,10 +43,10 @@ body {
 	width: 100%;
 	height: 6em;
 	background-color: $color_alt-primary;
-	//@include filter-gradient(#111, #000000, horizontal); // IE6-9 fallback on horizontal gradient
-	//@include background-image(radial-gradient(center, ellipse cover,  #111 0%,#000000 100%));
-	@include filter-gradient(#000000, #222, vertical); // IE6-9
-	@include background-image(linear-gradient(top, #000000 0%,#222 100%));
+	@include filter-gradient(#151515, $color_alt-primary, horizontal); // IE6-9 fallback on horizontal gradient
+	@include background-image(radial-gradient(center, ellipse cover, #151515 0%, $color_alt-primary 50%));
+	//@include filter-gradient($color_alt-primary, #151515, vertical); // IE6-9
+	//@include background-image(linear-gradient(top, $color_alt-primary 0%, #151515 100%));
 	border-bottom: 1px solid $color_primary;
 }
 	#header {
@@ -112,26 +112,29 @@ body {
 				float: right;
 			}
 				li {
-					@include column(3);
+					@include column(3, true);
 					height: 6em;
 					text-align: center;
 				}
 					li a {
 						//@include opacity(0.99);
 						display: block;
-						padding: 2em 0;
-						padding-left: $blueprint-grid-margin / 2;
-						color: $color_primary;
+						margin: 0.6em 0;
+						padding: 1.8em 0;
+						//padding-left: $blueprint-grid-margin / 2;
+						color: $color_secondary;
 						border-left: 1px solid rgba(255,255,255,0.1);
 						text-decoration: none;
-						font-family: $font_special;
-						font-size: 1.2em;
+						font-family: $font_terminal;
+						font-size: 1.1em;
+						text-transform: uppercase;
 						@include transition('color', 0.5s);
+						@include text-shadow($color_alt-primary 0px 2px 0px);
 						&:hover {
 							color: $color_con-primary;
 						}
 						&:active {
-							margin-top: 1px;
+							margin-top: 0.65em;
 						}
 					}
 				li.current-menu-item {
@@ -198,8 +201,11 @@ body {
 		.page {}
 
 			// Post, page, and 404 page titles
-			.entry-title a {
-				font-family: $font_special;
+			body.bp .entry-title a {
+				font-family: $font_terminal;
+				text-decoration: none;
+				font-size: 32px;
+				line-height: 1em;
 			}
 			.post-title {}
 			.page-title {}
@@ -358,6 +364,7 @@ a:hover {}
 a:active {}
 
 // Headers 
+h1, h2, h3, h4, h5, h6 { text-transform: uppercase; }
 h1 {}
 h2 {}
 h3 {}
