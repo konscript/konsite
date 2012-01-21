@@ -15,6 +15,24 @@ $blueprint-grid-margin: 10px;
 // Or you can set $blueprint-grid-width to a fixed value and unset $blueprint-container-size -- it will be calculated for you.
 $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $blueprint-grid-columns - $blueprint-grid-margin;
 
+// Global constants and variables goes here (re-usable colors, default sizes etc.)
+$color_primary: #fff;
+$color_secondary: #eee;
+$color_alt-primary: #000;
+$color_alt-secondary: #666;
+$color_con-primary: #00ff7e;
+$color_con-darker: #00753a;
+
+$font_special: 'News Cycle', sans-serif;
+$font_terminal: 'Terminal Dosis', sans-serif;
+$font_normal: 'Helvetica', helvetica, arial, sans-serif;
+
+$font-color: $color_alt-primary;
+$link-color: $color_alt-primary;
+$link-hover-color: $color_alt-secondary;
+
+// Custom mixins goes here
+
 // Load compass tools, utilities and blueprint modules
 @import "blueprint";
 @import "blueprint/reset";
@@ -23,17 +41,3 @@ $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $b
 @import "compass/typography/text/replacement";
 @import "compass/css3/box-shadow";
 @import "compass/css3/border-radius";
-
-// Global constants and variables goes here (re-usable colors, default sizes etc.)
-
-$color_primary: #fff;
-$color_secondary: #EEE;
-$color_alt-primary: #000;
-$color_con-primary: #00ff7e;
-
-$font_special: 'News Cycle', sans-serif;
-$font_terminal: 'Terminal Dosis', sans-serif;
-$font_normal: 'Helvetica', helvetica, arial, sans-serif;
-
-
-// Custom mixins goes here
