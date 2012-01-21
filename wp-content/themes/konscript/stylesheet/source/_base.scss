@@ -3,6 +3,9 @@
  * Partial for initializing common variables, importing utilities and setting up the framework
  */
 
+@import url(http://fonts.googleapis.com/css?family=News+Cycle);
+@import url(http://fonts.googleapis.com/css?family=Terminal+Dosis:400,300,200);
+
 // Configure blueprint
 $blueprint-grid-columns: 24;
 $blueprint-container-size: 950px;
@@ -15,7 +18,22 @@ $blueprint-grid-width: ($blueprint-container-size + $blueprint-grid-margin) / $b
 // Load compass tools, utilities and blueprint modules
 @import "blueprint";
 @import "blueprint/reset";
+@import "compass/css3/opacity";
+@import "compass/css3/transition";
+@import "compass/typography/text/replacement";
+@import "compass/css3/box-shadow";
+@import "compass/css3/border-radius";
 
 // Global constants and variables goes here (re-usable colors, default sizes etc.)
+
+$color_primary: #fff;
+$color_secondary: #EEE;
+$color_alt-primary: #000;
+$color_con-primary: #00ff7e;
+
+$font_special: 'News Cycle', sans-serif;
+$font_terminal: 'Terminal Dosis', sans-serif;
+$font_normal: 'Helvetica', helvetica, arial, sans-serif;
+
 
 // Custom mixins goes here

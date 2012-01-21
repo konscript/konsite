@@ -211,7 +211,7 @@ function site_title() {
 	$tag = ( is_front_page() ) ? 'h1' : 'div';
 
 	if ( $title = get_bloginfo( 'name' ) )
-		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home"><span>' . $title . '</span></a></' . $tag . '>';
+		$title = '<' . $tag . ' id="site-title"><a href="' . home_url() . '" title="' . esc_attr( $title ) . '" rel="home">' . $title . '</a></' . $tag . '>';
 
 	echo apply_atomic( 'site_title', $title );
 }

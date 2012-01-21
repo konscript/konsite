@@ -3,13 +3,8 @@
  */
 
 // Load the WP defaults and base
-@import "_wordpress";
 @import "_base";
-
-// Handy variables
-
-$color_alt-primary: #000;
-$color_primary: #fff;
+@import "_wordpress";
 
 // Default blueprint setup on the body
 body.bp {
@@ -29,8 +24,14 @@ form.bp {
  ************************************************/
 
 // Contains everything
-body {}
+body {
+	background-color: $color_primary;
+}
 	#body-wrapper {
+		background-color: $color_primary; // Old browsers
+		@include filter-gradient($color_primary, $color_secondary, horizontal); // IE6-9 fallback on horizontal gradient
+		@include background-image(radial-gradient(top, ellipse cover, $color_primary 0%, $color_secondary 50%));
+		
 	}
 
 /**
@@ -42,21 +43,44 @@ body {}
 	width: 100%;
 	height: 6em;
 	background-color: $color_alt-primary;
+	// needs latest Compass, add '@import "compass"' to your scss
+	background-color: #45484d; // Old browsers
+	@include filter-gradient(#111, #000000, horizontal); // IE6-9 fallback on horizontal gradient
+	@include background-image(radial-gradient(center, ellipse cover,  #111 0%,#000000 100%));
+	
 }
 	#header {
 		@include container;
+		
+		h1, div {
+			font-size: 100%;
+			line-height: 1;
+			margin: 0;
+			padding: 0;
+		}
 	}
 
 		// Site title
 		#site-title {
 			@include column(6);
-			margin-top: 0.5em;
+			height: 6em;				
+			
 			a {
-				color: $color_primary;
-				font-weight: normal;
+				display: block;
+				
+				@include opacity(0.99);
+				
+				font-weight: 300;
 				text-transform: uppercase;
 				text-decoration: none;
-				font-size: 0.9em;
+				font-family: $font_terminal;				
+				color: $color_con-primary;				
+
+				font-size: 3em;
+				
+				@include replace-text("logo-optimus.png", 0%, 50%);
+				background-repeat: no-repeat;
+				padding: 0.5em 0;
 			}
 				a span {}
 		}
@@ -84,6 +108,7 @@ body {}
 			// Menu list.
 			ul {
 				margin: 0;
+				padding: 0;
 				float: right;
 			}
 				li {
@@ -92,12 +117,20 @@ body {}
 					text-align: center;
 				}
 					li a {
+						//@include opacity(0.99);
 						display: block;
 						padding: 2em 0;
 						padding-left: $blueprint-grid-margin / 2;
 						color: $color_primary;
-						border-left: 1px solid $color_primary;						
+						border-left: 1px solid rgba(255,255,255,0.1);
 						text-decoration: none;
+						font-family: $font_special;
+						font-size: 1.2em;
+						@include transition('all', 0.5s);
+
+						&:hover {
+							color: $color_con-primary;
+						}
 					}
 				li.current-menu-item {}
 		}
@@ -107,9 +140,28 @@ body {}
  ************************************************/
 
 // Contains site's main content
-#content-container {}
+#content-container {
+	@include container;	
+	margin-top: 2em;
+}
+
+	#content-wrapper {
+		@include column(18);
+		margin-bottom: 1em;
+	}
+
 	#content {
-		@include container;
+		border-left: 1px solid #DDD;	
+		border-right: 1px solid #DDD;
+		@include border-radius(3px);
+		@include box-shadow(rgba(0,0,0,0.5) 0px 1px 0px);
+		
+		padding: $blueprint-grid-width + $blueprint-grid-margin 0;
+		@include prepend(1);
+		@include column(16);	
+		@include append(1);
+		
+		background-color: $color_primary;
 	}
 
 		// Breadcrumb trail
@@ -140,7 +192,9 @@ body {}
 		.page {}
 
 			// Post, page, and 404 page titles
-			.entry-title {}
+			.entry-title a {
+				font-family: $font_special;
+			}
 			.post-title {}
 			.page-title {}
 			.attachment-title {}
@@ -262,8 +316,11 @@ body {}
 
 	// Primary widget section
 	#sidebar-primary {
-		@include container;
-		.widget {}
+		@include column(6,true);
+
+		.widget {
+			padding-left: $blueprint-grid-margin;	
+		}
 			.widget-inside {}
 				.widget-title {}
 				.widget ul {}

@@ -33,3 +33,4 @@
 		</div><!-- #header-container -->
 
 		<div id="content-container">
+			<div id="content-wrapper">
